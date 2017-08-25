@@ -20,17 +20,15 @@
         <input type="submit" value="Login" class="btn btn-primary">
     </form>
 
-    {% if registered %}
-        <h1>Thank you for Registering!</h1>
-    {% else %}
-        <h1>Register</h1>
-        <form enctype="multipart/form-data" method="post">
-            {% csrf_token %}
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-            <input type="submit" name="" value="Register" class="btn btn-primary">
-        </form>
-    {% endif %}
+
+    <h1>Register</h1>
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" name="" value="Register" class="btn btn-primary">
+    </form>
+
 
 </div>
 
