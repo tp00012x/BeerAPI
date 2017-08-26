@@ -30,7 +30,7 @@ def index(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
-
+            login(request, user)
             return render(request, 'beer_tracker/home.html')
     else:
         user_form = UserForm()

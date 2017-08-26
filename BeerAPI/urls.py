@@ -23,6 +23,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
     url(r'^logout/$', views.user_logout, name="logout"),
-    url(r'^home/$', views.home, name="home"),
+    url(r'^home/', views.home, name="home"),
     url(r'^user_login/$', views.user_login, name="user_login"),
 ]

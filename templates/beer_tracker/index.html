@@ -23,7 +23,7 @@
     </form>
 
     <h1>Register</h1>
-    <form enctype="multipart/form-data" method="post">
+    <form action="{% url 'index' %}" method="post">
         {% csrf_token %}
         {{ user_form.as_p }}
         {{ profile_form.as_p }}
