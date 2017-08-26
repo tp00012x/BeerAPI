@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from beer_tracker.forms import UserForm, UserProfileInfoForm
+from beer_tracker.forms import UserForm, UserProfileInfoForm, NewUserForm
 
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
@@ -8,16 +8,25 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-@login_required
-def home(request):
-    return render(request, 'beer_tracker/home.html')
+# @login_required
+# def home(request):
+#     return render(request, 'beer_tracker/home.html')
 
 @login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
 
-def index(request):
+@login_required
+def user(request):
+    form = NewUserForm()
+    if request.method == "POST":
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+    return render(request, 'beer_tracker/home.html', {'form':form})
+
+def register(request):
 
     if request.method == "POST":
         user_form = UserForm(data=request.POST)

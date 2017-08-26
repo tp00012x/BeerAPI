@@ -3,10 +3,14 @@
 
 {% block body_block %}
 
-<div class="jumbotron">
-    <h1>Do the following:</h1>
-    <h2>Add User</h2>
-    <h2>Add Beer</h2>
-</div>
+<h2>Create New User</h2>
+<form method="POST">
+    {{ form.as_p}}
+    {% csrf_token %}
+    <input type="submit" class="btn btn-primary" value="submit">
+</form>
+<h2>Create New Beer</h2>
+
+<h2>List of Users:</h2>
 
 {% endblock %}
