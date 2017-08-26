@@ -9,7 +9,7 @@
 
 <div class="container">
     <h1>Login</h1>
-    <form action="{% url 'beer_tracker:user_login' %}" method="POST">
+    <form action="{% url 'user_login' %}" method="POST">
         {% csrf_token %}
         <label for="username">Username</label>
         <input type="text" name="username" placeholder="Enter Username">
@@ -21,7 +21,6 @@
         <p>Your email or password are incorrect, please try again!</p>
         {% endif %}
     </form>
-
 
     <h1>Register</h1>
     <form enctype="multipart/form-data" method="post">

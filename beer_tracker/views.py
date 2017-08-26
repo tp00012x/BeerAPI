@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from beer_tracker.forms import UserForm, UserProfileInfoForm
 
 from django.contrib.auth import authenticate, login, logout
@@ -51,5 +51,9 @@ def user_login(request):
                 login(request, user)
                 return HttpResponseRedirect(reverse('home'))
         else:
+            user_form = UserForm()
+            profile_form = UserProfileInfoForm()
             return render(request, 'beer_tracker/index.html',
-                                      {'invalid': True})
+                          {'invalid':True,
+                           'user_form': user_form,
+                           'profile_form': profile_form})
