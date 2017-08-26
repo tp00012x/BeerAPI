@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from beer_tracker.forms import UserForm, UserProfileInfoForm
 
 from django.contrib.auth import authenticate, login, logout
@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-
+@login_required
 def home(request):
     return render(request, 'beer_tracker/home.html')
 
@@ -50,28 +50,6 @@ def user_login(request):
             if user.is_active:
                 login(request, user)
                 return HttpResponseRedirect(reverse('home'))
-            else:
-                return render(request, 'beer_tracker/index.html')
-    else:
-        return render(request, "beer_tracker/index.html", {})
-
-def new_user(request):
-    if request.method == "POST":
-        user_form = UserForm(data=request.POST)
-        profile_form = UserProfileInfoForm(data=request.POST)
-
-        if user_form.is_valid() and profile_form.is_valid():
-
-            user = user_form.save()
-            user.set_password(user.password)
-            user.save()
-            profile = profile_form.save(commit=False)
-            profile.user = user
-
-    else:
-        user_form = UserForm()
-        profile_form = UserProfileInfoForm()
-
-    return render(request, 'beer_tracker/home.html',
-                  {'user_form': user_form,
-                   'profile_form': profile_form})
+        else:
+            return render(request, 'beer_tracker/index.html',
+                                      {'invalid': True})

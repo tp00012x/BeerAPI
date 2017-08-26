@@ -13,11 +13,13 @@
         {% csrf_token %}
         <label for="username">Username</label>
         <input type="text" name="username" placeholder="Enter Username">
-
         <label for="password">Password</label>
         <input type="password" name="password">
 
         <input type="submit" value="Login" class="btn btn-primary">
+        {% if invalid %}
+        <p>Your email or password are incorrect, please try again!</p>
+        {% endif %}
     </form>
 
 
@@ -28,8 +30,6 @@
         {{ profile_form.as_p }}
         <input type="submit" name="" value="Register" class="btn btn-primary">
     </form>
-
-
 </div>
 
 {% endblock %}
