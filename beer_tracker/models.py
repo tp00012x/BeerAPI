@@ -19,6 +19,7 @@ class BeerModel(models.Model):
 
     def __str__(self):
         return self.name
+
 # class Review(models.Model):
 #
 #     FIVE_REVIEWS = (
@@ -30,7 +31,7 @@ class BeerModel(models.Model):
 #     )
 #
 #     TEN_REVIEWS= (
-#         ('10', '19'),
+#         ('10', '10'),
 #         ('9', '9'),
 #         ('8', '8'),
 #         ('7', '7'),
@@ -41,6 +42,7 @@ class BeerModel(models.Model):
 #         ('2', '2'),
 #         ('1', '1'),
 #     )
+#
 #     user = models.ForeignKey(UserProfileInfo)
 #
 #     aroma = models.CharField(
