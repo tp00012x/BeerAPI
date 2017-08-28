@@ -1,15 +1,5 @@
 {% extends "beer_tracker/base.html" %}
-{% load staticfiles %}
-
 {% block body_block %}
-
-<h2>Create New User</h2>
-<form method="POST">
-    {{ form.as_p}}
-    {% csrf_token %}
-    <input type="submit" class="btn btn-primary" value="submit">
-</form>
-<h2>Create New Beer</h2>
 
 <h2>List of Users:</h2>
 
