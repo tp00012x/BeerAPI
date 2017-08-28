@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from beer_tracker.forms import UserForm, NewBeerForm
+from beer_tracker.forms import UserForm, NewBeerForm, RateForm
 from beer_tracker.models import BeerModel
 
 from django.contrib.auth import authenticate, login, logout
@@ -48,6 +48,18 @@ def new_beer(request):
 
     return render(request, 'beer_tracker/new_beer.html', {'beer':beer})
 
+@login_required
+def rate_beer(request):
+
+    if request.method == "POST":
+        rate_beer = RateForm(request.POST)
+        if rate_beer.is_valid():
+            rate_beer.save(commit=True)
+            return HttpResponseRedirect(reverse('beer_tracker:home'))
+    else:
+        rate_beer = RateForm()
+
+    return render(request, 'beer_tracker/rate_beer.html', {'rate_beer':rate_beer})
 
 def register(request):
 
