@@ -14,4 +14,4 @@ class UserForm(forms.ModelForm):
 class NewBeerForm(forms.ModelForm):
     class Meta:
         model = BeerModel
-        fields = ('name','ibu', 'calories', 'abv', 'style', 'location')
+        fields = ('user', 'name','ibu', 'calories', 'abv', 'style', 'location')

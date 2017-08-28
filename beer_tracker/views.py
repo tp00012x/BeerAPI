@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from beer_tracker.forms import UserForm, NewBeerForm
-from django.contrib.auth.models import User
+from beer_tracker.models import BeerModel
 
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
@@ -12,12 +12,12 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse('index'))
 
 @login_required
 def home(request):
-    users = User.objects.order_by('username')
-    dict = {'records':users}
+    beers = BeerModel.objects.order_by('name')
+    dict = {'records':beers}
     return render(request, 'beer_tracker/home.html', context=dict)
 
 @login_required

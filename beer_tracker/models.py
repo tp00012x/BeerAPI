@@ -1,10 +1,12 @@
 from django.db import models
+from django.conf import settings
 from django.utils.translation import ugettext
 
 # Create your models here.
 
 class BeerModel(models.Model):
 
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
     name = models.CharField(max_length=254, default="")
     style = models.CharField(max_length=254, default="")
     location = models.CharField(max_length=254, default="")
@@ -12,7 +14,11 @@ class BeerModel(models.Model):
     calories = models.IntegerField(default=0)
     abv = models.IntegerField(default=0)
 
+    class Meta:
+        verbose_name_plural = 'Beers'
 
+    def __str__(self):
+        return self.name
 # class Review(models.Model):
 #
 #     FIVE_REVIEWS = (
