@@ -11,11 +11,6 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'email', 'password')
 
-class NewUserForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ('username',)
-
 class NewBeerForm(forms.ModelForm):
     class Meta:
         model = BeerModel

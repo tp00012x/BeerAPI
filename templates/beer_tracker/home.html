@@ -1,6 +1,25 @@
 {% extends "beer_tracker/base.html" %}
 {% block body_block %}
+{% load staticfiles %}
 
-<h2>List of Users:</h2>
+{% if records %}
+    <h2>List of Users:</h2>
+    <table>
+        <thead>
+            <th>Username</th>
+            <th>Email</th>
+        </thead>
+    {% for users in records %}
+    <tr>
+        <td>{{ users.username }}</td>
+        <td>{{ users.email }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <div class="jumbotron">
+        <p>There are currently no Users. To create one please click on New User</p>
+    </div>
+{%  endif %}
 
 {% endblock %}
