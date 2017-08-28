@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from beer_tracker.forms import UserForm, NewUserForm, NewBeerForm
+from beer_tracker.forms import UserForm, NewBeerForm
+from django.contrib.auth.models import User
 
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
@@ -15,7 +16,9 @@ def user_logout(request):
 
 @login_required
 def home(request):
-    return render(request, 'beer_tracker/home.html')
+    users = User.objects.order_by('username')
+    dict = {'records':users}
+    return render(request, 'beer_tracker/home.html', context=dict)
 
 @login_required
 def new_user(request):
@@ -26,7 +29,7 @@ def new_user(request):
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-            return render(request, 'beer_tracker/home.html', {'user_form':user_form})
+            return HttpResponseRedirect(reverse('beer_tracker:home'))
     else:
         user_form = UserForm()
 
@@ -39,7 +42,7 @@ def new_beer(request):
         beer = NewBeerForm(request.POST)
         if beer.is_valid():
             beer.save(commit=True)
-            return render(request, 'beer_tracker/home.html', {'beer': beer})
+            return HttpResponseRedirect(reverse('beer_tracker:home'))
     else:
         beer = NewBeerForm()
 
@@ -55,12 +58,11 @@ def register(request):
             user.set_password(user.password)
             user.save()
             login(request, user)
-            return render(request, 'beer_tracker/home.html')
+            return HttpResponseRedirect(reverse('beer_tracker:home'))
     else:
         user_form = UserForm()
 
-    return render(request, 'beer_tracker/index.html',
-                  {'user_form': user_form})
+    return render(request, 'beer_tracker/index.html', {'user_form': user_form})
 
 def user_login(request):
     if request.method == "POST":
@@ -74,6 +76,4 @@ def user_login(request):
                 return HttpResponseRedirect(reverse('beer_tracker:home'))
         else:
             user_form = UserForm()
-            return render(request, 'beer_tracker/index.html',
-                          {'invalid':True,
-                           'user_form': user_form})
+            return render(request, 'beer_tracker/index.html', {'invalid':True,'user_form': user_form})
