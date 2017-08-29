@@ -9,29 +9,26 @@
     <link rel="stylesheet" href="{% static "css/styles.css" %}">
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-inverse bg-inverse navbar-static-top">
         <div class="container">
             <ul class="nav navbar-nav">
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'beer_tracker:home' %}" class="nav-brand">BeerAPI</a></li>
+                <li><a class="nav-link navli" href="{% url 'beer_tracker:home' %}">Logged in as: {{request.user.username}}</a></li>
                 {% else %}
                 <li><a href="{% url 'index' %}" class="nav-brand">BeerAPI</a></li>
                 {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'admin:index' %}" class="nav-brand">Admin</a></li>
                 {% if user.is_authenticated %}
-                <li><a class="nav-link" href="">Logged in as: {{request.user.username}}</a></li>
                 <li><a class="nav-link" href="{% url 'beer_tracker:home' %}">Home</a></li>
-                <li><a class="navbar-link" href="{% url 'beer_tracker:new_user' %}">New User</a></li>
-                <li><a class="navbar-link" href="{% url 'beer_tracker:new_beer' %}">New Beer</a></li>
-                <li><a class="navbar-link" href="{% url 'beer_tracker:rate_beer' %}">Rate</a></li>
-                <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                <li><a class="navbar-link" href="{% url 'beer_tracker:new_user' %}">Create User</a></li>
+                <li><a class="navbar-link" href="{% url 'beer_tracker:new_beer' %}">Create Beer</a></li>
+                <li><a class="navbar-link" href="{% url 'beer_tracker:rate_beer' %}">Rate Beer</a></li>
+                <li><a class="nav-link navli" href="{% url 'logout' %}">Logout</a></li>
                 {% endif %}
             </ul>
         </div>
     </nav>
-
     <div class="container">
         {% block body_block %}
         {% endblock %}

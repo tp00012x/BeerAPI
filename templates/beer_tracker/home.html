@@ -1,25 +1,42 @@
 {% extends "beer_tracker/base.html" %}
 {% block body_block %}
 {% load staticfiles %}
-
 {% if records %}
-    <h2>List of Beers:</h2>
-    <table>
-        <thead>
-            <th>Beer</th>
-            <th>User</th>
-        </thead>
-    {% for beers in records %}
-    <tr>
-        <td>{{ beers.name }}</td>
-        <td>{{ beers.user }}</td>
-    </tr>
-    {% endfor %}
-    </table>
+    <div class="jumbotron container" >
+        <div class="table">
+            <h2>List of Beers</h2>
+            {% for beers in records %}
+                <div class="table">
+                    <h4>Beer Name: {{ beers.name }}</h4>
+                    <h5>User: {{ beers.user }}</h5>
+                    <ul>
+                        <li>Style:{{ beers.style }}</li>
+                        <li>IBU: {{ beers.ibu }}</li>
+                        <li>Calories: {{ beers.calories }}</li>
+                        <li>Location: {{ beers.location }}</li>
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="table">
+            <h2>Reviews</h2>
+            {% for rate in rates %}
+                <div class="table">
+                    <h4>Reviewer: {{ rate.user }}</h4>
+                    <h5>Beer Reviewed: {{ rate.beer }}</h5>
+                    <ul>
+                        <li>Aroma: {{ rate.aroma }}</li>
+                        <li>Appearance: {{ rate.appearance }}</li>
+                        <li>Taste: {{ rate.taste }}</li>
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+
 {% else %}
     <div class="jumbotron">
         <p>There are currently no Beers. To create a beer click on New Beer</p>
     </div>
 {%  endif %}
-
+    </div>
 {% endblock %}

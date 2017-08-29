@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 
-# Create your models here.
+# Models
 
 User = settings.AUTH_USER_MODEL
 
@@ -44,6 +44,7 @@ class RateModel(models.Model):
         ('1', '1'),
     )
 
+    user = models.ForeignKey(User, default=1)
     beer = models.ForeignKey(BeerModel)
     aroma = models.CharField(max_length=2, choices=FIVE_REVIEWS, default="--")
     appearance = models.CharField(max_length=2, choices=FIVE_REVIEWS, default="--")

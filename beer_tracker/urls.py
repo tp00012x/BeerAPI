@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^new_beer/$', views.new_beer, name="new_beer"),
     url(r'^rate_beer/$', views.rate_beer, name="rate_beer"),
     url(r'^beers/$', views.BeerModelList.as_view(), name="beers"),
+    url(r'^rates/$', views.RateModelList.as_view(), name="rates"),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

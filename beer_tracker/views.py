@@ -5,13 +5,14 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 
 from .forms import UserForm, NewBeerForm, RateForm
-from .models import BeerModel
+from .models import BeerModel, RateModel
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import BeerModelSerializer
+from .serializers import BeerModelSerializer, RateModelSerializer
 
-# Create your views here.
+# Views
+
 @login_required
 def user_logout(request):
     logout(request)
@@ -20,7 +21,8 @@ def user_logout(request):
 @login_required
 def home(request):
     beers = BeerModel.objects.order_by('name')
-    dict = {'records':beers}
+    rates = RateModel.objects.all()
+    dict = {'records':beers, 'rates':rates}
     return render(request, 'beer_tracker/home.html', context=dict)
 
 @login_required
@@ -88,9 +90,15 @@ def user_login(request):
             user_form = UserForm()
             return render(request, 'beer_tracker/index.html', {'invalid':True,'user_form': user_form})
 
-# Show list of beers as JSON
+# Show list of beers and reviews as JSON
 class BeerModelList(APIView):
     def get(self, request):
         beers = BeerModel.objects.all()
         serializer = BeerModelSerializer(beers, many=True)
+        return Response(serializer.data)
+
+class RateModelList(APIView):
+    def get(self, request):
+        rates = RateModel.objects.all()
+        serializer = RateModelSerializer(rates, many=True)
         return Response(serializer.data)

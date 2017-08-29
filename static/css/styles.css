@@ -1,4 +1,45 @@
-table, th, td {
-    border: 2px solid black;
+ul {
+ list-style-type: none;
+}
+
+.table {
+    border: 1px solid black;
     padding: 5px;
+    width: auto;
+    text-align: center;
+}
+
+div.jumbotron.container > div.table > h2 {
+    text-align: center;
+}
+
+div.jumbotron.container > div.table > div.table {
+    width: 400px;
+    margin: 20px auto;
+}
+
+div.jumbotron.container > div.table > div.table > ul > li {
+    margin-left:-40px ;
+    background-color: aquamarine;
+    padding: 5px;
+    border: 0.5px solid black;
+    margin-top: 2.5px;
+}
+
+div.jumbotron > div.table > div.table > h4 {
+    background-color: cornflowerblue;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+div.jumbotron > div.table > div.table > h5 {
+    background-color: yellow;
+    padding: 10px;
+    border: 1px solid black;
+    width: 100%;
+}
+
+li > a.nav-link.navli {
+    color: aliceblue;
 }
