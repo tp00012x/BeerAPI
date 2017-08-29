@@ -7,6 +7,20 @@ ul {
     padding: 5px;
     width: auto;
     text-align: center;
+    display: inline-block;
+}
+
+h1, h2 {
+    padding-bottom: 5px;
+}
+
+.jumbotron > h1 {
+    font-size: 40px;
+
+}
+
+.jumbotron p {
+    font-size: 14px;
 }
 
 div.jumbotron.container > div.table > h2 {
@@ -14,7 +28,7 @@ div.jumbotron.container > div.table > h2 {
 }
 
 div.jumbotron.container > div.table > div.table {
-    width: 400px;
+    width: 250px;
     margin: 20px auto;
 }
 
@@ -42,4 +56,34 @@ div.jumbotron > div.table > div.table > h5 {
 
 li > a.nav-link.navli {
     color: aliceblue;
+}
+
+
+
+
+.navbar-toggle .icon-bar:nth-of-type(2) {
+	  top: 1px;
+}
+
+.navbar-toggle .icon-bar:nth-of-type(3) {
+  	top: 2px;
+}
+
+.navbar-toggle .icon-bar {
+	  position: relative;
+	  transition: all 500ms ease-in-out;
+}
+
+.navbar-toggle.active .icon-bar:nth-of-type(1) {
+	  top: 6px;
+	  transform: rotate(45deg);
+}
+
+.navbar-toggle.active .icon-bar:nth-of-type(2) {
+	  background-color: transparent;
+}
+
+.navbar-toggle.active .icon-bar:nth-of-type(3) {
+	  top: -6px;
+	  transform: rotate(-45deg);
 }

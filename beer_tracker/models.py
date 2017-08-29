@@ -21,6 +21,7 @@ class BeerModel(models.Model):
     def __str__(self):
         return self.name
 
+
 class RateModel(models.Model):
 
     FIVE_REVIEWS = (
@@ -46,10 +47,9 @@ class RateModel(models.Model):
 
     user = models.ForeignKey(User, default=1)
     beer = models.ForeignKey(BeerModel)
-    aroma = models.CharField(max_length=2, choices=FIVE_REVIEWS, default="--")
-    appearance = models.CharField(max_length=2, choices=FIVE_REVIEWS, default="--")
-    taste = models.CharField(max_length=2, choices= TEN_REVIEWS, default= "--")
-    overall = models.IntegerField(default=0)
+    aroma = models.CharField(max_length=2, choices=FIVE_REVIEWS, default="5")
+    appearance = models.CharField(max_length=2, choices=FIVE_REVIEWS, default="5")
+    taste = models.CharField(max_length=2, choices= TEN_REVIEWS, default= "5")
 
     class Meta:
         verbose_name_plural = 'Ratings'

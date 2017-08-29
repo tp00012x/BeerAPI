@@ -1,34 +1,35 @@
 {% extends "beer_tracker/base.html" %}
 {% block body_block %}
 {% load staticfiles %}
-
-<div class="jumbotron">
-    <h1>Welcome to Beer API</h1>
-    <h2>To get Started please Register or Login.</h2>
-</div>
-
-<div class="container">
-    <h1>Login</h1>
-    <form action="{% url 'user_login' %}" method="POST">
-        {% csrf_token %}
-        <label for="username">Username</label>
-        <input type="text" name="username" placeholder="Enter Username">
-        <label for="password">Password</label>
-        <input type="password" name="password">
-
-        <input type="submit" value="Login" class="btn btn-primary">
-        {% if invalid %}
-        <p>Your email or password are incorrect, please try again!</p>
-        {% endif %}
-    </form>
-
-    <h1>Register</h1>
-    <form action="{% url 'index' %}" method="post">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
-        <input type="submit" name="" value="Register" class="btn btn-primary">
-    </form>
-</div>
-
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Welcome to Beer API</h1>
+            <h3>To get Started please Register or Login.</h3>
+        </div>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Login</h1>
+            <form action="{% url 'user_login' %}" method="POST">
+                {% csrf_token %}
+                <label for="username">Username</label>
+                <input type="text" name="username" placeholder="Enter Username">
+                <label for="password">Password</label>
+                <input type="password" name="password">
+                <input type="submit" value="Login" class="btn btn-primary">
+                {% if invalid %}
+                    <p>Your email or password are incorrect, please try again!</p>
+                {% endif %}
+            </form>
+        </div>
+        <div class="jumbotron">
+            <h1>Register</h1>
+            <form action="{% url 'index' %}" method="post">
+                {% csrf_token %}
+                <p>{{ user_form.as_p }}</p>
+                <p>{{ profile_form.as_p }}</p>
+                <input type="submit" name="" value="Register" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
 {% endblock %}

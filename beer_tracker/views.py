@@ -21,7 +21,7 @@ def user_logout(request):
 @login_required
 def home(request):
     beers = BeerModel.objects.order_by('name')
-    rates = RateModel.objects.all()
+    rates = RateModel.objects.order_by('user')
     dict = {'records':beers, 'rates':rates}
     return render(request, 'beer_tracker/home.html', context=dict)
 

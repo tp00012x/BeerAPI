@@ -1,12 +1,14 @@
 {% extends "beer_tracker/base.html" %}
 {% block body_block %}
 {% load staticfiles %}
-
-<h2>Rate Beer</h2>
-<form method="POST">
-    {% csrf_token %}
-    {{ rate_beer.as_p}}
-    <input type="submit" class="btn btn-primary" value="submit">
-</form>
-
+    <div class="jumbotron container">
+        <div class="form">
+            <h2>Rate Beer</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ rate_beer.as_p}}
+                <input type="submit" class="btn btn-primary" value="submit">
+            </form>
+        </div>
+    </div>
 {% endblock %}
