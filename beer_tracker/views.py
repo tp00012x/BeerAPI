@@ -1,14 +1,17 @@
 from django.shortcuts import render
-from beer_tracker.forms import UserForm, NewBeerForm, RateForm
-from beer_tracker.models import BeerModel
-
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+from .forms import UserForm, NewBeerForm, RateForm
+from .models import BeerModel
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .serializers import BeerModelSerializer
+
+# Create your views here.
 @login_required
 def user_logout(request):
     logout(request)
@@ -22,7 +25,6 @@ def home(request):
 
 @login_required
 def new_user(request):
-
     if request.method == "POST":
         user_form = UserForm(data=request.POST)
         if user_form.is_valid():
@@ -37,7 +39,6 @@ def new_user(request):
 
 @login_required
 def new_beer(request):
-
     if request.method == "POST":
         beer = NewBeerForm(request.POST)
         if beer.is_valid():
@@ -50,7 +51,6 @@ def new_beer(request):
 
 @login_required
 def rate_beer(request):
-
     if request.method == "POST":
         rate_beer = RateForm(request.POST)
         if rate_beer.is_valid():
@@ -62,7 +62,6 @@ def rate_beer(request):
     return render(request, 'beer_tracker/rate_beer.html', {'rate_beer':rate_beer})
 
 def register(request):
-
     if request.method == "POST":
         user_form = UserForm(data=request.POST)
         if user_form.is_valid():
@@ -81,7 +80,6 @@ def user_login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
-
         if user:
             if user.is_active:
                 login(request, user)
@@ -89,3 +87,10 @@ def user_login(request):
         else:
             user_form = UserForm()
             return render(request, 'beer_tracker/index.html', {'invalid':True,'user_form': user_form})
+
+# Show list of beers as JSON
+class BeerModelList(APIView):
+    def get(self, request):
+        beers = BeerModel.objects.all()
+        serializer = BeerModelSerializer(beers, many=True)
+        return Response(serializer.data)

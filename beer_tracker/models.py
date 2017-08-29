@@ -1,18 +1,19 @@
 from django.db import models
 from django.conf import settings
-from django.utils.translation import ugettext
 
 # Create your models here.
 
+User = settings.AUTH_USER_MODEL
+
 class BeerModel(models.Model):
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+    user = models.ForeignKey(User, default=1)
     name = models.CharField(max_length=254, default="")
     style = models.CharField(max_length=254, default="")
-    location = models.CharField(max_length=254, default="")
     ibu = models.IntegerField(default="")
     calories = models.IntegerField(default="")
     abv = models.IntegerField(default="")
+    location = models.CharField(max_length=254, default="")
 
     class Meta:
         verbose_name_plural = 'Beers'
