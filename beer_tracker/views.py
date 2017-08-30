@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from django.db.models import Avg
 
 from .forms import UserForm, NewBeerForm, RateForm
 from .models import BeerModel, RateModel
@@ -20,9 +21,14 @@ def user_logout(request):
 
 @login_required
 def home(request):
-    beers = BeerModel.objects.order_by('name')
-    rates = RateModel.objects.order_by('user')
-    dict = {'records':beers, 'rates':rates}
+    beers = BeerModel.objects.order_by('name').annotate(
+        avg__aroma=Avg('ratemodel__aroma'),
+        avg__appearance=Avg('ratemodel__appearance'),
+        avg__taste=Avg('ratemodel__taste'),
+    )
+    rates = RateModel.objects.order_by('beer')
+    dict = {'records': beers, 'rates': rates}
+
     return render(request, 'beer_tracker/home.html', context=dict)
 
 @login_required
@@ -91,6 +97,7 @@ def user_login(request):
             return render(request, 'beer_tracker/index.html', {'invalid':True,'user_form': user_form})
 
 # Show list of beers and reviews as JSON
+
 class BeerModelList(APIView):
     def get(self, request):
         beers = BeerModel.objects.all()

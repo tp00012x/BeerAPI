@@ -15,6 +15,12 @@
                         <li><b>Calories: </b>{{ beers.calories }}</li>
                         <li><b>Location: </b>{{ beers.location }}</li>
                     </ul>
+                    <h4><b>Overall Ratings: </b></h4>
+                    <ul>
+                        <li><b>Aroma: </b>{{ beers.avg__aroma|floatformat }}</li>
+                        <li><b>Appearance: </b>{{ beers.avg__appearance|floatformat }}</li>
+                        <li><b>Taste: </b>{{ beers.avg__taste|floatformat }}</li>
+                    </ul>
                 </div>
             {% endfor %}
         </div>
@@ -32,7 +38,6 @@
                 </div>
             {% endfor %}
         </div>
-
 {% else %}
     <div class="jumbotron">
         <p>There are currently no Beers. To create a beer click on New Beer</p>
