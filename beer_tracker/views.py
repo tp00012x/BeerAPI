@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Avg
 from django.utils import timezone
 
-
 from .serializers import BeerModelSerializer, RateModelSerializer
 from .forms import UserForm, NewBeerForm, RateForm
 from .models import BeerModel, RateModel
@@ -51,11 +50,12 @@ def new_user(request):
 def new_beer(request):
     if request.method == "POST":
         yesterday = timezone.now() - timezone.timedelta(days=1)
-        if BeerModel.objects.filter(user=request.user.username, created__gt=yesterday).exists():
-            return HttpResponseForbidden()
         beer = NewBeerForm(request.POST)
         if beer.is_valid():
-            beer.save(commit=True)
+            new_beer = beer.save(commit=False)
+            if BeerModel.objects.filter(user=new_beer.user, created__gt=yesterday).exists():
+                return HttpResponseForbidden()
+            new_beer.save()
             return HttpResponseRedirect(reverse('beer_tracker:home'))
     else:
         beer = NewBeerForm()
