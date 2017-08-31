@@ -5,6 +5,7 @@ from django.conf import settings
 
 User = settings.AUTH_USER_MODEL
 
+
 class BeerModel(models.Model):
 
     user = models.ForeignKey(User, default=1)
@@ -14,15 +15,13 @@ class BeerModel(models.Model):
     calories = models.IntegerField(default="")
     abv = models.IntegerField(default="")
     location = models.CharField(max_length=254, default="")
+    created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name_plural = 'Beers'
 
     def __str__(self):
         return self.name
-
-    def avg(self):
-        return
 
 
 class RateModel(models.Model):

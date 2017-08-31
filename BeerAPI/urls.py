@@ -18,8 +18,8 @@ from django.contrib import admin
 from beer_tracker import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     url(r'^$', views.register, name='index'),
+    url(r'^admin/', admin.site.urls),
     url(r'^logout/$', views.user_logout, name="logout"),
     url(r'^user_login/$', views.user_login, name="user_login"),
     url(r'^home/', include('beer_tracker.urls'), name="home"),

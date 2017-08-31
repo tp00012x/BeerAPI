@@ -1,16 +1,18 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg
+from django.utils import timezone
 
+
+from .serializers import BeerModelSerializer, RateModelSerializer
 from .forms import UserForm, NewBeerForm, RateForm
 from .models import BeerModel, RateModel
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import BeerModelSerializer, RateModelSerializer
 
 # Views
 
@@ -48,6 +50,9 @@ def new_user(request):
 @login_required
 def new_beer(request):
     if request.method == "POST":
+        yesterday = timezone.now() - timezone.timedelta(days=1)
+        if BeerModel.objects.filter(user=request.user.username, created__gt=yesterday).exists():
+            return HttpResponseForbidden()
         beer = NewBeerForm(request.POST)
         if beer.is_valid():
             beer.save(commit=True)
@@ -103,6 +108,7 @@ class BeerModelList(APIView):
         beers = BeerModel.objects.all()
         serializer = BeerModelSerializer(beers, many=True)
         return Response(serializer.data)
+
 
 class RateModelList(APIView):
     def get(self, request):
