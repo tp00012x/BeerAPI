@@ -7,7 +7,7 @@ This is a web application that let users create their own beer and reviews.
 2. It's recommended to create a virtual environment before installing all the requirements from step 3.
 
     To create environment with anaconda run:
-    - conda create --name myenv
+    - conda create --name BeerAPI
 
 3. Install requirements:
     - pip install -r requirements.txt
