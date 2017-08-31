@@ -7,6 +7,9 @@
             <form method="POST">
                 {% csrf_token %}
                 {{ beer.as_p}}
+                {% if invalid %}
+                    <p class="alert">You can only create one beer for this User per day!<br>Please wait one day or select a different User</p>
+                {% endif %}
                 <input type="submit" class="btn btn-primary" value="submit">
             </form>
         </div>

@@ -15,32 +15,41 @@
                         <li><b>Calories: </b>{{ beers.calories }}</li>
                         <li><b>Location: </b>{{ beers.location }}</li>
                     </ul>
-                    <h4><b>Overall Ratings: </b></h4>
-                    <ul>
-                        <li><b>Aroma: </b>{{ beers.avg__aroma|floatformat }}</li>
-                        <li><b>Appearance: </b>{{ beers.avg__appearance|floatformat }}</li>
-                        <li><b>Taste: </b>{{ beers.avg__taste|floatformat }}</li>
-                    </ul>
+                    {% if rates %}
+                        <h4><b>Overall Ratings: </b></h4>
+                        <ul>
+                            <li><b>Aroma: </b>{{ beers.avg__aroma|floatformat }}</li>
+                            <li><b>Appearance: </b>{{ beers.avg__appearance|floatformat }}</li>
+                            <li><b>Taste: </b>{{ beers.avg__taste|floatformat }}</li>
+                        </ul>
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>
-        <div class="table">
-            <h2>Reviews</h2>
-            {% for rate in rates %}
-                <div class="table">
-                    <h4><b>Reviewer: </b>{{ rate.user }}</h4>
-                    <h5><b>Beer Reviewed: </b>{{ rate.beer }}</h5>
-                    <ul>
-                        <li><b>Aroma: </b>{{ rate.aroma }}</li>
-                        <li><b>Appearance: </b>{{ rate.appearance }}</li>
-                        <li><b>Taste: </b>{{ rate.taste }}</li>
-                    </ul>
-                </div>
-            {% endfor %}
-        </div>
+        {% if rates %}
+            <div class="table">
+                <h2>Reviews</h2>
+                {% for rate in rates %}
+                    <div class="table">
+                        <h4><b>Reviewer: </b>{{ rate.user }}</h4>
+                        <h5><b>Beer Reviewed: </b>{{ rate.beer }}</h5>
+                        <ul>
+                            <li><b>Aroma: </b>{{ rate.aroma }}</li>
+                            <li><b>Appearance: </b>{{ rate.appearance }}</li>
+                            <li><b>Taste: </b>{{ rate.taste }}</li>
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="jumbotron">
+                <p class="center">There are currently no reviews. To create a review click on Rate Beer</p>
+            </div>
+        {% endif %}
+    </div>
 {% else %}
     <div class="jumbotron">
-        <p>There are currently no Beers. To create a beer click on New Beer</p>
+        <p class="center">There are currently no Beers. To create a beer click on New Beer</p>
     </div>
 {%  endif %}
     </div>

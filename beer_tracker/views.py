@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect, HttpResponseForbidden
+from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg
@@ -54,7 +54,8 @@ def new_beer(request):
         if beer.is_valid():
             new_beer = beer.save(commit=False)
             if BeerModel.objects.filter(user=new_beer.user, created__gt=yesterday).exists():
-                return HttpResponseForbidden()
+                beer = NewBeerForm()
+                return render(request, 'beer_tracker/new_beer.html', {'invalid': True, 'beer': beer})
             new_beer.save()
             return HttpResponseRedirect(reverse('beer_tracker:home'))
     else:
