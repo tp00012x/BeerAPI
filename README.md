@@ -1,29 +1,9 @@
 # BeerAPI
 
-This is a web application that let users create their own beer and reviews.
+An application that let's you create beers, and let's you rate them by their aroma, appearance and taste.
 
-1. Download project to desired location and 'cd' into the BeerAPI folder
+The application will display an average rating for all the beers as you create more reviews.
 
-2. It's recommended to create a virtual environment before installing all the requirements from step 3.
+This is release 1.1.0 of this application. 
 
-    To create environment with anaconda run:
-    - conda create --name BeerAPI
-
-3. Install requirements:
-    - pip install -r requirements.txt
-
-4. Run server
-    - python manage.py runserver
-    
-----------------------
-
-After you have the application running, please register as new user.
-
-5. To login into the admin page: http://127.0.0.1:8000/admin/ , create a super user by running:
-
-   - python manage.py create super user
-  
-Note: To view the reviews and beers using Django REST framework, go to:
-
-   - http://127.0.0.1:8000/home/rates/ to see rates
-   - http://127.0.0.1:8000/home/reviews/ to see reviews
+Cheers ;)
