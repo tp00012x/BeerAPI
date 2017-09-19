@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a41576c1-bb57-40af-a625-8fd9852ca906" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0002_auto_20170823_1933.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0003_remove_userprofileinfo_profile_pic.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0004_auto_20170826_2059.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0005_auto_20170826_2105.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0006_auto_20170827_0319.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0007_auto_20170827_2154.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0008_beermodel_user.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0009_userprofile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0010_auto_20170828_0327.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0011_auto_20170828_0329.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0012_auto_20170828_0330.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0013_auto_20170828_0629.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0014_ratemodel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0015_auto_20170828_0644.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0016_ratemodel_user.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0017_auto_20170830_0047.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0018_auto_20170830_2144.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0019_auto_20170830_2152.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0020_auto_20170830_2155.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/beer_tracker/migrations/0021_beermodel_created.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BeerAPI/settings.py" afterPath="$PROJECT_DIR$/BeerAPI/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beer_tracker/models.py" afterPath="$PROJECT_DIR$/beer_tracker/models.py" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,8 +22,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BeerAPI/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+            <state relative-caret-position="435">
+              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -383,6 +361,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -429,8 +408,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/BeerAPI/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+        <state relative-caret-position="435">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
